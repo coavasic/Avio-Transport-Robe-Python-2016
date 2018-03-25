@@ -1,0 +1,5 @@
+a1|avion1|1999|44.0|10|Valjevo|h1|12.0|55.0|17.0|true|
+a2|avion123|2014|55.0|20|Monte Karlo|h4|16.0|100.0|20.0|true|
+a3|avionNeki|1902|100.0|20|Valjevo|h5|30.0|100.0|20.0|true|
+a4|mig|2006|40.0|3|Beograd|h3|10.0|50.0|7.0|true|
+a5|bojing|199|100.0|100|Bukurest|h6|100.0|100.0|100.0|true|

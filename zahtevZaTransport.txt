@@ -1,0 +1,11 @@
+0|29/06/2016|None|Valjevo|204|a1|0/1/|utovarena|
+1|29/06/2016|None|Valjevo|204|a1|2/|utovarena|
+2|29/06/2016|None|Valjevo|203|a3|3/|odobren|
+3|30/06/2016|None|Beograd|79780| |4/|kreiran|
+4|30/06/2016|None|Valjevo|57600| |5/|kreiran|
+5|01/07/2016|None|Valjevo|204| |6/|kreiran|
+6|01/07/2016|None|Valjevo|203| |7/8/|kreiran|
+7|02/07/2016|None|Beograd|204| |9/|kreiran|
+8|03/07/2016|None|Valjevo|204| |10/|kreiran|
+9|03/07/2016|05/07/2016 19:36|Valjevo|204|a3|11/|transportovano|
+10|05/07/2016|None|Beograd|31440| |12/13/|kreiran|

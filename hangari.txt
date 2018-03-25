@@ -1,0 +1,8 @@
+h1|hangar1|200.0|100.0|50.0|true|
+h2|hangar2|250.0|100.0|50.0|true|
+h3|hangar3|250.0|50.0|50.0|true|
+h4|hangar4|150.0|120.0|50.0|true|
+h5|hangar5|220.0|133.0|52.0|true|
+h6|hangar6|123.0|321.0|33.0|true|
+h7|hangar7|12.0|21.0|3.0|true|
+h8|hangaar|100.0|100.0|100.0|true|

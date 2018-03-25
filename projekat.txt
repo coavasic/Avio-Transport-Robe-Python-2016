@@ -1,0 +1,127 @@
+Aplikacija za evidenciju transporta robe avionskim prevozom
+
+Napraviti aplikaciju koja vodi evidenciju o hangarima, avionima i robi koja se prevozi avionskim transportom.
+
+U aplikaciji je potrebno da postoje sledeći tipovi korisnika:
+
+Menadžer transporta
+Menadžer hangara
+Radnik
+Potražitelj
+
+
+
+Svaki korisnik ima identifikacioni kod, ime i prezime. Identifikacioni kod mora biti jedinstven za sve korisnike. Menadžer transporta, menadžer hangara i radnik se moraju prijaviti na sistem i za njih se moraju čuvati i korisničko ime i lozinka. Potražitelj se ne loguje na sistem već unosi ime, prezime, broj telefona i email prilikom potraživanja za transportom robe. Potražitelj nakon unosa podataka dobija identifikacioni kod, koji mora biti jedinstven u odnosu na ostale korisnike i kojim može da vidi predmete koje je tražio da se transportuju. Svaki sledeći put ako želi da zatraži novi transport robe može odmah da unese identifikacioni kod.
+
+Treba obezbediti rad sa sledećim entitetima:
+
+Aerodrom koji ima naziv, adresu i mesto gde je lociran i može da sadrži jedan ili više hangara.
+
+
+Hangar predstavlja objekat gde se smeštaju avioni. Dok se avion nalazi u hangaru roba za transport se utovara u avion. Hangar je opisan sledećim atributima: oznaka, naziv, dužina, širina i visina hangara. U jednom hangaru može da bude postavljeno više aviona, a može biti i prazan.
+
+
+Avion treba da sadrži sledeće atribute: oznaka, naziv, godište, dužina, raspon krila, visina, ukupna nosivost i relacija na kojoj leti. Oznaka mora biti jedinstvena vrednost u odnosu na ostale avione. Za relaciju je potrebno navesti sva mesta u koja ce avion sleteti. Roba se transportuje samo na ona mesta koja su navedena u relaciji na kojoj avion leti. Avioni koji trenutno transportuju robu treba da budu izbačeni iz hangara, ali i dalje postoje zapamćeni u sistemu za ponovni transport robe. Avion sadrži jedan ili više prostora za teret.
+
+
+Prostor za teret je oblast u avionu u koju može da se utovari roba za transport. Opisan je sledećim atributima: naziv, dužina, širina i visina. Prostor za robu može sadržati proizvoljnu količinu robe, a može biti i prazan.
+
+Roba koja predstavlja predmet koji je potrebno transportovati. Opisana je sledećim atributima: oznaka, naziv, opis, dužina, širina, visina, težina robe i identifikacioni kod potražitelja.
+
+Zahtev za transport robe kojima se određuje koju robu je potrebno transportovati. Opisan je identifikacionim kodom, datumom kreiranja zahteva, datum kada je roba transportovana, odredištem gde se roba transportuje, identifkacionim kodom potražitelja koji je zatražio transport robe, oznakom aviona koji će transportovati robu i statusom zahteva. Status zahteva određuje u kojem se trenutno stanju nalazi zahtev za transport robe i moguća stanja su: kreiran, odobren, roba utovarena i roba  transportovana. Za jedan zahtev za transport robe može biti određeno više komada različite robe.
+Zahtev za smeštanje aviona u hangar opisan je atibutima: identifikacioni kod, datum kreiranja zahteva, vreme kada je avion smešten u hangar, vreme kada avion napušta hangar, oznaka hangara u koji se smešta avion, oznaka aviona koji se smešta u hangar i identifikacionim kodom menadžera hangara koji je kreirao zahtev. Zahtev za smeštanje aviona u hangar se odnosi samo za jedan avion.
+Entitete i korisnike treba realizovati korišćenjem koncepata objektno-orjentisanog programiranja.
+
+Aplikacija treba da omogući:
+
+1)      Čuvanje i čitanje podataka iz fajlova. Čuvaju se podaci o korisnicima, aerodromu, hangarima, avionima, prostoru za teret, robi i zahtevima. Podaci se čitaju automatski i na zahtev korisnika (ponovno očitavanje podataka). Moguća su dva pristupa u čuvanju podataka: (1) nakon svake izmene podataka, izmena fajlova (jedan ili više) je automatska; (2) podaci se čuvaju po izlasku iz aplikacije. Izbor formata u kojima se zapisuju podaci prepušten je studentu.
+
+2)      Za potražitelja:
+
+a)      Da zatraži uslugu transporta robe, kreira zahtev za transport robe i unese robu koju bi hteo da transportuje. Vrednost za oznaku aviona se postavlja tek nakon što menadžer transporta odobri zahtev za transport robe, a datum kada je roba transportovana postavlja menadžer hangara. Vrednosti za ostale atribute postavlja potražitelj. Jednom zahtevu za transport robe se može dodeliti više različitih komada robe.
+
+b)      Da pregleda sve zahteve za transport robe koje je kreirao, na osnovu identifikacionog koda koji dobije prilikom prvog prijavljivanja
+
+3)      Menadžer hangara:
+
+a)      Može da vidi sve zahteve za smeštanje aviona u hangar
+
+b)      Može da vidi zahteve za transport robe kojima je status postavljen na roba utovarena
+
+c)       Dodaje nove hangare
+
+d)      Dodaje nove avione i određuje koliki prostor za smeštanje robe postoji u avionu
+
+e)      Kreira zahtev za smeštanje aviona u hangar. Samo avioni koji su transportovali robu i koji nisu u hangaru mogu biti smešteni u hangar. Potrebno je proveriti da li avion može da stane u hangar proveravajući vrednosti za dužinu, širinu i visinu hangara sa širinom, rasponom krila i visinom aviona. U hangaru može biti već smešteni avioni i treba i njih uzeti u obzir prilikom provere. Ako avion može da stane u hangar kreira se zahtev za smeštanje aviona i avion se ubacuje u odgovarajući hangar
+
+f)       Za avione koji transportuju robu, a određuje se na osnovu vremena kada avion napušta hangar iz zahteva za smeštanje aviona u hangar, izbacuje svu robu iz aviona, izbacuje avione iz hangara i zahteve za transport robe kojima je status postavljen na roba utovarena, a odnose se na avione koji se izbacuju iz hangara, postavlja status na roba transportovana i datum kada je roba transportovana
+
+4)      Menadžer transporta
+
+a)      Može da vidi zahteve za transport robe,
+
+b)      Može da vidi zahteve za smeštanje aviona u hangar
+
+c)       Može da odobri zahtev za transport robe. Prvo je potrebno proveriti da li trenutno postoji avion koji je ubačen u hangar i koji leti na odgovarajućoj relaciji, a koja sadrži mesto gde se roba transportuje, koje odgovara odredištu iz zahteva za transport robe. Za robu iz zahteva za transport robe potrebno je proveriti da li može da stane u prostor za teret odgovarajućeg aviona. Za robu se proverava da li može da stane po dužini, širini, visini i takođe po težini. Za avion je određeno kolika je maksimalna nosivost, a svaki prostor za teret aviona ima određene dimenzije koje je potrebno proveriti sa svom robom koja je smeštena u avion. U jedan avion se može smestiti roba iz različitih zahteva za transport robe. Ako za zahtev za transport robe ne mogu da stanu svi komadi robe koji su navedeni za taj zahtev za transport robe, zahtev za transport robe ne može biti odobren i pokušava se ubacivanje u drugi avion. Ako sva roba iz zahteva za transport robe može da stane u avion, u zahtev za transport robe se upisuje vrednost za oznaku aviona koji transportuje robu i menja se status zahteva za transport robe u odobren.
+
+d)      Sortira zahteve za transport robe po:
+
+i)        Datumu kreiranja
+
+ii)       Datumu realizacije zahteva
+
+iii)     Po status zahteva
+
+5)      Radnik:
+
+a)      Može da vidi sve zahteve za transport robe koji su potvrđeni od menadžera
+
+b)      Unosi i raspoređuje predmete iz zahteva za transport robe koje je potvrdio menadžer u odgovarajuće prostore za teret unutar aviona. Menja status zahteva za transport robe u roba utovarena.
+
+6)      Menadžer transporta, menadžer hangara i radnik:
+
+a)      Mogu da vide sve hangare, avione, prostore za teret i robu u prostoru za teret aviona
+
+b)      Pretražuju  hangare po:
+
+i)        Oznaci
+
+ii)       Nazivu
+
+iii)     Širini
+
+iv)     Dužini
+
+v)      Visini
+
+c)       Pretražuju avione po:
+
+i)        Oznaci
+
+ii)        Dužini
+
+iii)     Širini
+
+iv)     Rasponu krila
+
+v)      Nosivosti
+
+vi)     Relaciji (unosi mesto koje je navedeno u relaciji na kojoj avion leti)
+
+d)      Pretražuju robu po:
+
+i)        Oznaci
+
+ii)        Nazivu
+
+iii)      Opisu
+
+iv)      Dužini
+
+v)       Širini
+
+vi)     Visini
+
+vii)    Težini robe
+
+viii)   Identifikacionom kodu potražitelja
